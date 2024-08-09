@@ -72,14 +72,14 @@ export class ProdutoService {
         if(!buscaProduto || !produto.id)
             throw new HttpException('O Produto não foi encontrado!', HttpStatus.NOT_FOUND);
 
-        // Se o usuário indicou a categoria
+
         if(produto.categoria){
 
             await this.categoriaService.findById(produto.categoria.id)
 
             return await this.produtoRepository.save(produto);
         }
-        // Se o usuário não indicou a categoria
+        
         return await this.produtoRepository.save(produto);
     }
 

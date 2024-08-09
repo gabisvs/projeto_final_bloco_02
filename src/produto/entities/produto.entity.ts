@@ -24,6 +24,11 @@ export class Produto {
 
     @Column()
     foto: string;
+
+    @IsNumber({maxDecimalPlaces: 2})
+    @IsNotEmpty() 
+    @Column({ type: "decimal", precision: 10, scale: 2, nullable: false })
+    estoque: number;
     
     @ManyToOne(() => Categoria, (categoria) => categoria.produto, {
         onDelete: "CASCADE"
